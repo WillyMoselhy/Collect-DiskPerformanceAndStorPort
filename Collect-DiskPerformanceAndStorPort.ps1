@@ -20,7 +20,7 @@
 Param(
     # Path to save output
     # Default is C:\PerLogs
-    [Parameter(Mandatory = $false]
+    [Parameter(Mandatory = $false)]
     [ValidateScript({Test-Path -LiteralPath $_ -PathType Container})]
     [string] $FolderPath = "C:\PerfLogs",
 
