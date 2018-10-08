@@ -15,35 +15,29 @@
 
     This will create only StorPort Traces for 10 minutes, the result will be compressed into a ZIP file
 .LINK
-https://github.com/WillyMoselhy/WireShark-Tracing/tree/master/Trace-WiresharkCluster
+    https://github.com/WillyMoselhy/Collect-DiskPerformanceAndStorPort
 #>
 Param(
-    # Folder path
+    # Path to save output
     # Default is C:\PerLogs
-    # Collect performance logs
-    [Parameter(Mandatory = $false, Position  = 1)]
+    [Parameter(Mandatory = $false]
     [ValidateScript({Test-Path -LiteralPath $_ -PathType Container})]
     [string] $FolderPath = "C:\PerfLogs",
 
     # FileName Prefix
-    # Default is Disc Performance Script
+    # Default is DiskPerformanceScript
     # Use Case ID for example!
     [Parameter(Mandatory = $false)]
     [string] $FilePrefix = "DiskPerformanceScript",
 
-    # Collect StorPort traces
+    # Collect Performance Counters
     [Parameter(Mandatory = $false)]
     [switch] $PerformanceCounters,
 
     # Collect StorPort traces
     [Parameter(Mandatory = $false)]
     [switch] $StorPortTrace,
-    
-    # Storport trace maximum file size
-    # Default is 4096 MB
-    [Parameter(Mandatory = $false)]
-    [int] $StorPortMaxSizeMB = 4096,
-    
+       
     # Performance Counters maximum file size
     # Default is 512 MB
     [Parameter(Mandatory = $false)]
@@ -54,7 +48,12 @@ Param(
     [Parameter(Mandatory = $false, Position  = 1)]
     [ValidatePattern("^\d\d:\d\d:\d\d$")]
     [string] $PerfCountersInterval = "00:00:01",
-    
+
+    # Storport trace maximum file size
+    # Default is 4096 MB
+    [Parameter(Mandatory = $false)]
+    [int] $StorPortMaxSizeMB = 4096,
+
     # Tracing duration
     [Parameter(Mandatory = $true)]
     [int] $DurationInMinutes,
