@@ -191,12 +191,12 @@ WriteInfo "Script is running with elevated permissions"
 
 #region: Verify Compress-Archive is available
 if($Compress){
-    WriteInfo "Checking if Microsoft.PowerShell.Archive module is available." -WaitForResult
-    if(Get-Module -Name Microsoft.PowerShell.Archive){
+    WriteInfo "Checking if Compress-Archive is available." -WaitForResult
+    if(Get-Command -Name Compress-Archive -ErrorAction SilentlyContinue){
         WriteResult -Pass
     }
     else {
-        WriteErrorAndExit "Microsoft.PowerShell.Archive module is not available on this system. Please remove -Compress parameter."
+        WriteErrorAndExit "Compress-Archive is not available on this system. Please remove -Compress parameter."
     }
 }
 #endregion: Verify Compress-Archive is available
