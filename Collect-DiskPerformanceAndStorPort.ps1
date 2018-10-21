@@ -28,6 +28,10 @@ Param(
     # Default is DiskPerformanceScript
     # Use Case ID for example!
     [Parameter(Mandatory = $false)]
+    [ValidateScript({
+            if($_ -match "^[^\\/:*?`"<>|\s]+$"){$true}
+            else{ Throw "'$_' is not a valid folder name or contains spaces. Please do NOT include any of these characters \/:*?`"<>| and remove any spaces."}
+    })] #Regex for valid folder names without any spaces - https://regexr.com/41kfp
     [string] $FilePrefix = "DiskPerformanceScript",
 
     # Collect Performance Counters
